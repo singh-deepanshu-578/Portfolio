@@ -95,7 +95,7 @@ Happy exploring! 🚀
                 <Terminal
                     commands={commands}
                     welcomeMessage={welcomeMessage}
-                    promptLabel={'ankurprajapati:~$'}
+                    promptLabel={'deepanshusingh:~$'}
                     promptLabelStyle={{ color: '#00ff00' }}
                 />
             </div>
