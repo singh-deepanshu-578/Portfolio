@@ -1,25 +1,28 @@
 import React, { useEffect,useState } from 'react'
-import Markdown from 'react-markdown'
-import SyntaxHighlighter from 'react-syntax-highlighter';
-import { atelierDuneDark } from 'react-syntax-highlighter/dist/esm/styles/hljs';
 import MacWindow from './MacWindow'
 import "./note.scss"
 
 
-const Note = ({ windowName, setWindowsState }) => {
+const Note = ({ windowName, setWindowsState, isActive, onFocus }) => {
 
     const [ markdown, setMarkdown ] = useState(null)
 
     useEffect(() => {
-        fetch("/note.txt")
-            .then(res => res.text())
+        fetch(`${import.meta.env.BASE_URL}note.txt`)
+            .then(res => {
+                if (!res.ok) {
+                    throw new Error(`Notes request failed with status ${res.status}`)
+                }
+                return res.text()
+            })
             .then(text => setMarkdown(text))
+            .catch(error => setMarkdown(`Unable to load Notes: ${error.message}`))
     }, [])
 
     return (
-        <MacWindow windowName={windowName} setWindowsState={setWindowsState} >
+        <MacWindow windowName={windowName} setWindowsState={setWindowsState} isActive={isActive} onFocus={onFocus} >
             <div className="note-window">
-                { markdown ? <SyntaxHighlighter language='typescript' style={atelierDuneDark} >{markdown}</SyntaxHighlighter> : <p>Loading...</p> }
+                { markdown ? <pre className="note-text">{markdown}</pre> : <p>Loading...</p> }
             </div>
         </MacWindow>
     )

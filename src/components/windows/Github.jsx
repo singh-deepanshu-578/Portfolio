@@ -4,9 +4,7 @@ import MacWindow from './MacWindow'
 import "./github.scss"
 
 const GitCard = ({ data = { id: 1, image: "", title: "", description: "", tags: [], repoLink: "", demoLink: "" } }) => {
-    return <div className="card">
-
-        <img src={data.image} alt="" />
+    return <a className="card" href={data.demoLink} target="_blank" rel="noreferrer">
         <h1>{data.title}</h1>
         <p className='description' >{data.description}</p>
 
@@ -17,20 +15,26 @@ const GitCard = ({ data = { id: 1, image: "", title: "", description: "", tags: 
         </div>
 
         <div className="urls">
-            <a href={data.repoLink}>Repository</a>
-            {data.demoLink && <a href={data.demoLink}>Demo link</a>}
+            <span>Explore Live Demo →</span>
         </div>
-    </div>
+    </a>
 }
 
 
-const Github = ({ windowName, setWindowsState }) => {
+const Github = ({ windowName, setWindowsState, isActive, onFocus }) => {
     return (
-        <MacWindow windowName={windowName} setWindowsState={setWindowsState} >
-            <div className="cards">
-                {githubData.map(project => {
-                    return <GitCard data={project} />
-                })}
+        <MacWindow windowName={windowName} setWindowsState={setWindowsState} isActive={isActive} onFocus={onFocus} >
+            <div className="github-content">
+                <div className="github-profile">
+                    <h1>Deepanshu Singh</h1>
+                    <p>@singh-deepanshu-578</p>
+                    <a href="https://github.com/singh-deepanshu-578">View GitHub profile</a>
+                </div>
+                <div className="cards">
+                    {githubData.map(project => {
+                        return <GitCard key={project.id} data={project} />
+                    })}
+                </div>
             </div>
         </MacWindow>
     )

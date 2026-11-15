@@ -6,16 +6,11 @@ const DateTime = () => {
   useEffect(() => {
     const updateDateTime = () => {
       const now = new Date()
-      const formattedDateTime = now.toLocaleString('en-US', {
-        weekday: 'short',
-        month: 'short',
-        day: 'numeric',
-        hour: 'numeric',
-        minute: '2-digit',
-        hour12: true
-      }).toLowerCase().replace(/,/g, '')
-      
-      setDateTime(formattedDateTime)
+      const weekday = now.toLocaleDateString('en-US', { weekday: 'short' }).toLowerCase()
+      const date = now.toLocaleDateString('en-US', { month: 'short', day: 'numeric' }).toLowerCase()
+      const time = now.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', hour12: true }).toLowerCase()
+
+      setDateTime({ weekday, date, time })
     }
 
     updateDateTime()
@@ -25,7 +20,11 @@ const DateTime = () => {
   }, [])
 
   return (
-    <div>{dateTime}</div>
+    <time className="date-time">
+      <span>{dateTime.weekday}</span>
+      <span>{dateTime.date}</span>
+      <strong>{dateTime.time}</strong>
+    </time>
   )
 }
 

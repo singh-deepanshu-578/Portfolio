@@ -1,23 +1,49 @@
-import React from 'react'
+import { useState } from 'react'
 import { Rnd } from 'react-rnd'
 import "./window.scss"
 
-const MacWindow = ({ children, width = "40vw", height = "40vh", windowName, setWindowsState }) => {
+const MacWindow = ({ children, width = "85vw", height = "75vh", windowName, setWindowsState, isActive, onFocus }) => {
+    const [isMinimized, setIsMinimized] = useState(false)
+    const [isMaximized, setIsMaximized] = useState(false)
+
     return (
         <Rnd
+            dragHandleClassName="window-drag-handle"
+            style={{ zIndex: isActive ? 20 : 1 }}
             default={{
                 width: width,
                 height: height,
-                x: 300,
-                y: 200
+                x: 100,
+                y: 80
             }}
         >
-            <div className="window">
-                <div className="nav">
+            <div
+                onMouseDown={onFocus}
+                className={`window${isMinimized ? " minimized" : ""}${isMaximized ? " maximized" : ""}`}
+            >
+                <div className="nav window-drag-handle">
                     <div className="dots">
-                        <div onClick={() => setWindowsState(state => ({ ...state, [windowName]: false }))} className="dot red"></div>
-                        <div className="dot yellow"></div>
-                        <div className="dot green"></div>
+                        <button
+                            type="button"
+                            onClick={() => setWindowsState(state => ({ ...state, [windowName]: false }))}
+                            className="dot red"
+                            aria-label="Close window"
+                        ></button>
+                        <button
+                            type="button"
+                            onClick={() => setIsMinimized(value => !value)}
+                            className="dot yellow"
+                            aria-label="Minimize window"
+                        ></button>
+                        <button
+                            type="button"
+                            onClick={() => {
+                                setIsMinimized(false)
+                                setIsMaximized(value => !value)
+                            }}
+                            className="dot green"
+                            aria-label="Maximize window"
+                        ></button>
                     </div>
 
                     <div className="title"><p>Deepanshu Singh - zsh</p></div>

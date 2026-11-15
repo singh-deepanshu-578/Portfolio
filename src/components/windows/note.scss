@@ -7,7 +7,13 @@
     font-size: 1.1rem;
 
 
-    pre{
+    .note-text {
+        margin: 0;
         background-color: transparent !important;
+        white-space: pre-wrap;
+        overflow-wrap: anywhere;
+        word-break: break-word;
+        overflow-x: hidden;
+        font: inherit;
     }
 }
