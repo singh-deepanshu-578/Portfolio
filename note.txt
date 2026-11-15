@@ -1,0 +1,16 @@
+ABOUT DEEPANSHU SINGH
+
+I am a Computer Science undergraduate specializing in Artificial Intelligence and Machine Learning at Inderprastha Engineering College.
+
+CURRENTLY PURSUING
+- B.Tech in Computer Science and Engineering (AI & ML)
+- 2023 - 2027
+
+FOCUS
+- Front-end and full-stack web development
+- ReactJS, Django, Python, and JavaScript
+- TensorFlow, computer vision, and cloud development
+- Docker, Google Cloud Platform, AWS, and DevOps
+
+GOALS
+I am working toward a front-end or software development role where I can build polished, reliable products and contribute to cloud-native applications using containerization, serverless services, and DevOps practices.
