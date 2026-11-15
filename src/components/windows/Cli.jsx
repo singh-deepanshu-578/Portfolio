@@ -30,12 +30,28 @@ Developer Tools: Git, GitHub`
         projects: {
             description: 'View my projects',
             usage: 'projects',
-            fn: () => `1. Project Management Dashboard - ReactJS, SASS, Material Design, Chart.js
-   https://project-management-dashboard-seven-gamma.vercel.app
-2. SmartCare Hospital Management System - Django, SQLite, HTML, CSS, JavaScript
-   https://smartcare-hms-production.up.railway.app
-3. Diabetic Retinopathy Severity Classification - TensorFlow, CNNs, Transfer Learning, TFLite
-   https://diabetic-retinopathy-severity-class.vercel.app`
+            fn: () => (
+                <div className="cli-projects">
+                    <div>
+                        1. Project Management Dashboard - ReactJS, SASS, Material Design, Chart.js
+                        <a href="https://project-management-dashboard-seven-gamma.vercel.app" target="_blank" rel="noreferrer">
+                            https://project-management-dashboard-seven-gamma.vercel.app
+                        </a>
+                    </div>
+                    <div>
+                        2. SmartCare Hospital Management System - Django, SQLite, HTML, CSS, JavaScript
+                        <a href="https://smartcare-hms-production.up.railway.app" target="_blank" rel="noreferrer">
+                            https://smartcare-hms-production.up.railway.app
+                        </a>
+                    </div>
+                    <div>
+                        3. Diabetic Retinopathy Severity Classification - TensorFlow, CNNs, Transfer Learning, TFLite
+                        <a href="https://diabetic-retinopathy-severity-class.vercel.app" target="_blank" rel="noreferrer">
+                            https://diabetic-retinopathy-severity-class.vercel.app
+                        </a>
+                    </div>
+                </div>
+            )
         },
         experience: {
             description: 'Display work experience',
